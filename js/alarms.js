@@ -3,7 +3,7 @@
  */
 
 
-var url="http://apiproxy.ironcache.net:8888/alarms";
+var url="http://coomoora-test.apigee.net/v1/pisec";
 
 $(document).ready(function () {
     getAlarmData();
@@ -25,7 +25,7 @@ function buildMenu(links) {
                     postCommand(linkvals.href,"");
                 });
         ul.append(li);
-    })
+    });
 
     return $('<div/>').addClass("X-CONTROL").append(ul);
 }
@@ -34,7 +34,7 @@ function getAlarmData() {
     "use strict";
     $.ajax({
             type: 'GET',
-            url: '/alarms',
+            url: url + "/alarms",
             dataType: 'json'
         }
     ).done(function(payload) {
@@ -59,7 +59,7 @@ function postCommand(Path,Body) {
             } });
     $.ajax({
             type: "POST",
-            url: Path,
+            url: url + Path,
             data: Body,
             contentType: "application/json"
         }
